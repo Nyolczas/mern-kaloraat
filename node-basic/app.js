@@ -1,4 +1,11 @@
-const helpers = require('./helpers');
+const express = require("express");
+const app = express();
+const fileWatch = require('./fileWatch');
 
-const total = helpers.sum(10, 20);
-console.log("TOTAL: ", total);
+fileWatch
+
+app.get("/", (req, res) => {
+    res.send("hey pina");
+});
+
+app.listen(3000);
