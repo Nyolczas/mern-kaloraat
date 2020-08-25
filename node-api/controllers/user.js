@@ -10,3 +10,12 @@ exports.userById = (req, res, next) => {
         req.profile = user // adds profile object in req with user info
     })
 }
+
+exports.hasAuthorization = (req, res, next) => {
+    const authorized = req.profile && req.auth && req.profile._id === req.auth._id
+    if(!authorized) {
+        return res.status(403).json({
+            error: 'A felhasználónak nincs jogosultsága ehhez!'
+        });
+    }
+}
